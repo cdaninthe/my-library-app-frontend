@@ -10,6 +10,13 @@ import { Route, Switch } from "react-router-dom";
 
 
 function App() {
+  const [books, setBooks] = useState([])
+
+    useEffect(()=>{
+        fetch(`http://localhost:9292/books`)
+        .then((r)=> r.json())
+        .then((books)=> setBooks(books))
+    },[])
 
   return (
     <div className="App">
@@ -23,7 +30,7 @@ function App() {
           <LibraryStats />
         </Route>
         <Route exact path="/">
-          <Library />
+          <Library books={books} setBooks={setBooks}/>
         </Route>
       </Switch> 
     </div>
