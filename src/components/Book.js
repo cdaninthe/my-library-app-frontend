@@ -9,6 +9,7 @@ function Book({book, onDeleteBook, onUpdateBook, authors, genres}){
     const [pages, setPages] = useState("")
     const [author, setAuthor] = useState('')
     const [genre, setGenre] = useState("")
+    const [like, setLike] = useState(false)
     
 
     function handleDeleteClick(){
@@ -75,6 +76,10 @@ function Book({book, onDeleteBook, onUpdateBook, authors, genres}){
         return test.name
     }
 
+    function handleLikeClick(){
+        like ? setLike(false) : setLike(true)
+    }
+
 
     return( 
         <Card fluid color='yellow' >
@@ -121,7 +126,11 @@ function Book({book, onDeleteBook, onUpdateBook, authors, genres}){
                 
             </form>
             <div>
-                <Icon name='heart outline' />    
+                {like ? 
+                    (<Icon name='heart' onClick={handleLikeClick}/>) 
+                    :
+                    (<Icon name='heart outline' onClick={handleLikeClick}/>)
+                }  
                 <Icon name='edit outline' onClick={handleEditClick}/>
                 <Icon name='trash alternate outline' onClick={handleDeleteClick}/> 
             </div>

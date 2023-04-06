@@ -14,7 +14,7 @@ function Library({books, setBooks, authors, genres}){
     return(
         <div>
             <br/>
-            <h1>My library main page</h1>
+            <h1>Welcome to my Library</h1>
             <Search setSearch={setSeach}/>
             <br/>
             <Container>

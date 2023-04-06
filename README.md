@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to My Library App! (frontend)
 
-## Available Scripts
 
-In the project directory, you can run:
+A B O U T
+=========
+My Wardrobe is a Single Page Application built with React on the frontend and Ruby on the backend. With this application you will be able to:
 
-### `npm start`
+- see all the books in your library
+- add new books, authors or genres to your library
+- delete or edit books in your library
+- search books by title
+- like books (This feature doesn't have backend persistence)
+- keep track of how many books you have in your library and how many of those books are unread
+- see the book with the most page
+- see the newest book in your library
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+C O N T E X T
+=========
+This app was created as part of my portfolio project for Flatiron School, Software Engineer Bootcamp. The project was required to follow the following:
 
-### `npm test`
+1- Use Active Record to interact with a database.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2- Have at least two models with a one-to-many relationship.
 
-### `npm run build`
+3- At a minimum, set up the following API routes in Sinatra:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    - create and read actions for both models
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    - full CRUD capability for one of the models: The update action should be implemented using a form that is pre-filled with existing values for the object. On submission of the form, the object should update. Note: Using a like button or similar will not meet the update requirement.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4- Build a separate React frontend application that interacts with the API to perform CRUD actions.
 
-### `npm run eject`
+5- Implement proper front end state management. You should be updating state using a setState function after receiving your response from a POST, PATCH, or DELETE request. You should NOT be relying on a GET request to update state.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+6- Use good OO design patterns. You should have separate classes for each of your models, and create instance and class methods as necessary.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+7- Routes in your application (both client side and back end) should follow RESTful conventions.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+8- Use your back end optimally. Pass JSON for related associations to the front end from the back end. You should use active record methods in your controller to grab the needed data from your database and provide as JSON to the front end. You should NOT be relying on filtering front end state or a separate fetch request to retrieve related data.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+C O N T R I B U T I N G
+=========
+If you would like to contribute to this project, just fork it and use it.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+FRONTEND: https://github.com/cdaninthe/my-library-app-frontend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+BACKEND: https://github.com/cdaninthe/my-library-app-backend
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+L I C E N S E
+=========
+This is an open source project that follows the MIT license
