@@ -44,7 +44,7 @@ function Book({book, onDeleteBook, onUpdateBook}){
         })
         
         .then((r)=> r.json())
-        .then((updatedItem)=> onUpdateBook(updatedItem))
+        .then((updatedBook)=> onUpdateBook(updatedBook))
         //.then((updatedItem)=> console.log(updatedItem))
 
         setBookHidden('')

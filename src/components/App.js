@@ -58,7 +58,7 @@ function App() {
           <GenreForm onAddGenre={handleAddGenre}/>
         </Route>
         <Route exact path="/stats">
-          <LibraryStats />
+          <LibraryStats books={books}/>
         </Route>
         <Route exact path="/">
           <Library books={books} setBooks={setBooks}/>
