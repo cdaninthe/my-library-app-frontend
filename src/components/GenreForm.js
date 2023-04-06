@@ -32,8 +32,6 @@ function GenreForm({onAddGenre}){
                 <button type="submit" className="active">Add Genre</button>
             </form>
         </div>
-        
-    
     );
 }
 

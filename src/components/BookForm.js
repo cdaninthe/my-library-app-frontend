@@ -42,18 +42,6 @@ function BookForm({onAddBook, authors, genres}){
                 <input type="text" name="title" placeholder="Book title" 
                     onChange={handleChange}
                 /><br /><br />
-                
-                {/* <label>Author:</label><br />
-                <input type="number" name="author_id" placeholder="Author" 
-                    onChange={handleChange}
-
-                /><br /><br />
-
-                <label>Genre:</label><br />
-                <input type="number" name="genre_id" placeholder="Genre" 
-                    onChange={handleChange}
-                /><br /><br /> */}
-
 
                 <label>Author:</label><br />
                 <select placeholder="Select an Author" name="author_id" onChange={handleChange}>
@@ -65,6 +53,7 @@ function BookForm({onAddBook, authors, genres}){
                     ))}
                 </select>
                 <br /><br />
+
                 <label>Genre:</label><br />
                 <select placeholder="Select a Genre" name="genre_id" onChange={handleChange}>
                     {/* <option value="null">Select Genre</option> */}
@@ -81,12 +70,9 @@ function BookForm({onAddBook, authors, genres}){
                     onChange={handleChange}
                 /><br /><br />
 
-                
                 <button type="submit" className="active">Add Book</button>
             </form>
         </div>
-        
-    
     );
 }
 

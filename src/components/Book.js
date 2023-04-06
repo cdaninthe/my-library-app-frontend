@@ -11,7 +11,6 @@ function Book({book, onDeleteBook, onUpdateBook, authors, genres}){
     const [genre, setGenre] = useState("")
     
 
-
     function handleDeleteClick(){
         fetch(`http://localhost:9292/books/${book.id}`, {
             method: "DELETE",
@@ -79,55 +78,52 @@ function Book({book, onDeleteBook, onUpdateBook, authors, genres}){
 
     return( 
         <Card fluid color='yellow' >
-
+            <div className="content" hidden={bookHidden}>
+                <h3>{book.title}</h3>
+                <h4>{getAuthorName(book.author_id)}</h4>
+                <p>{getGenreName(book.genre_id)}</p>
+                <p>{book.pages} pages</p> 
+                <p>{book.read ? "Read" : "Not Read"}</p>       
+            </div>
+            <form hidden={formHidden} onSubmit={handleSubmitUpdate}>
+                <label>Title:</label><br />
+                <input value={title} onChange={(e)=> setTitle(e.target.value)}></input>
+                <label>Author:</label><br />
+                <select placeholder="Select an Author" onChange={(e) => setAuthor(e.target.value)}>
+                    <option value={author}>{author}</option>
+                    {authors.map((author) => (
+                        <option key={author.id} value={author.name}>
+                            {author.name}
+                        </option>
+                    ))}
+                </select>
+                <br />
+                <label>Genre:</label><br />
+                <select placeholder="Select a Genre" onChange={(e) => setGenre(e.target.value)}>
+                    <option value={genre}>{genre}</option>
+                    {genres.map((genre) => (
+                        <option key={genre.id} value={genre.name}>
+                            {genre.name}
+                        </option>
+                    ))}
+                </select>
+                <br />
+                <label>Page Number:</label><br />
+                <input value={pages} onChange={(e)=> setPages(e.target.value)}></input>
+                <label>Read? </label><br />
+                <select onChange={(e) => setRead(e.target.value)}>
+                    <option value={read}>{read ? "Read" : "Not Read"}</option>
+                    <option value='true'>Read</option>
+                    <option value='false'>Not Read</option>
+                </select>
+                <br />
+                <button type="submit">Save Book Update</button>
+                
+            </form>
             <div>
-                <div className="content" hidden={bookHidden}>
-                    <h3>{book.title}</h3>
-                    <h4>{getAuthorName(book.author_id)}</h4>
-                    <p>{getGenreName(book.genre_id)}</p>
-                    <p>{book.pages} pages</p> 
-                    <p>{book.read ? "Read" : "Not Read"}</p>       
-                </div>
-                <form hidden={formHidden} onSubmit={handleSubmitUpdate}>
-                    <label>Title:</label><br />
-                    <input value={title} onChange={(e)=> setTitle(e.target.value)}></input>
-                    <label>Author:</label><br />
-                    <select placeholder="Select an Author" onChange={(e) => setAuthor(e.target.value)}>
-                        <option value={author}>{author}</option>
-                        {authors.map((author) => (
-                            <option key={author.id} value={author.name}>
-                                {author.name}
-                            </option>
-                        ))}
-                    </select>
-                    <br />
-                    <label>Genre:</label><br />
-                    <select placeholder="Select a Genre" onChange={(e) => setGenre(e.target.value)}>
-                        <option value={genre}>{genre}</option>
-                        {genres.map((genre) => (
-                            <option key={genre.id} value={genre.name}>
-                                {genre.name}
-                            </option>
-                        ))}
-                    </select>
-                    <br />
-                    <label>Page Number:</label><br />
-                    <input value={pages} onChange={(e)=> setPages(e.target.value)}></input>
-                    <label>Read? </label><br />
-                    <select onChange={(e) => setRead(e.target.value)}>
-                        <option value={read}>{read ? "Read" : "Not Read"}</option>
-                        <option value='true'>Read</option>
-                        <option value='false'>Not Read</option>
-                    </select>
-                    <br />
-                    <button type="submit">Save Book Update</button>
-                    
-                </form>
-                <div>
-                    <Icon name='heart outline' />    
-                    <Icon name='edit outline' onClick={handleEditClick}/>
-                    <Icon name='trash alternate outline' onClick={handleDeleteClick}/> 
-                </div>
+                <Icon name='heart outline' />    
+                <Icon name='edit outline' onClick={handleEditClick}/>
+                <Icon name='trash alternate outline' onClick={handleDeleteClick}/> 
             </div>
         </Card>   
     );

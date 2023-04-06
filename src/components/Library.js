@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { Container } from "semantic-ui-react";
 import Books from "./Books";
 import Search from "./Search";
-import Filter from "./Filter";
 
 
 function Library({books, setBooks, authors, genres}){
@@ -18,19 +17,14 @@ function Library({books, setBooks, authors, genres}){
             <h1>My library main page</h1>
             <Search setSearch={setSeach}/>
             <br/>
-            <Filter/>
-            <br/>
             <Container>
                 <Books 
                     books={updatedBooks} setBooks={setBooks}
                     authors={authors} 
                     genres={genres}
                 />
-            </Container>
-            
+            </Container>           
         </div>
-        
-    
     );
 }
 

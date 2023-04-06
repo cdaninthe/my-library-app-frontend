@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useHistory} from 'react-router-dom';
 
 
-function AuthorForm({onAddAuthor, authors}){
+function AuthorForm({onAddAuthor}){
     const [newAuthor, setNewAuthor] = useState('')
     const history = useHistory()
 
