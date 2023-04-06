@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "semantic-ui-react";
 import Book from "./Book";
 
-function Books({books, setBooks, authors, setAuthors, genres, setGenres}){
+function Books({books, setBooks, authors, genres}){
     function handleDeleteBook(deletedBook){
         const updatedBooks = books.filter((book)=> book.id !== deletedBook.id)
         setBooks(updatedBooks)
@@ -17,7 +17,6 @@ function Books({books, setBooks, authors, setAuthors, genres, setGenres}){
             }
           });
           setBooks(updatedBooks)
-          console.log(updatedBooks)
     }
 
     return(
@@ -27,8 +26,8 @@ function Books({books, setBooks, authors, setAuthors, genres, setGenres}){
                     key={book.id} book={book} 
                     onDeleteBook={handleDeleteBook}
                     onUpdateBook={handleUpdateBook}
-                    authors={authors} setAuthors={setAuthors}
-                    genres={genres} setGenres={setGenres}
+                    authors={authors} 
+                    genres={genres}
                 />
             ))}
         </Card.Group>

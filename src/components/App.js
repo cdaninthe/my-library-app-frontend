@@ -44,9 +44,7 @@ function App() {
   }
 
   function handleAddBook(newBook){
-    console.log(newBook)
     setBooks([...books, newBook])
-
   }
 
   return (
@@ -55,13 +53,16 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/form">
-          <BookForm onAddBook={handleAddBook}/>
+          <BookForm onAddBook={handleAddBook}
+            authors={authors} 
+            genres={genres}
+          />
         </Route>
         <Route exact path="/author">
-          <AuthorForm onAddAuthor={handleAddAuthor}/>
+          <AuthorForm onAddAuthor={handleAddAuthor} authors={authors}/>
         </Route>
         <Route exact path="/genre">
-          <GenreForm onAddGenre={handleAddGenre}/>
+          <GenreForm onAddGenre={handleAddGenre} genres={genres}/>
         </Route>
         <Route exact path="/stats">
           <LibraryStats books={books}/>
@@ -69,8 +70,8 @@ function App() {
         <Route exact path="/">
           <Library 
             books={books} setBooks={setBooks}
-            authors={authors} setAuthors={setAuthors}
-            genres={genres} setGenres={setGenres}
+            authors={authors} 
+            genres={genres} 
           />
         </Route>
       </Switch> 

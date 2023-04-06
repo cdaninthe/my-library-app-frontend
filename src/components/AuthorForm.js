@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useHistory} from 'react-router-dom';
 
 
-function AuthorForm({onAddAuthor}){
+function AuthorForm({onAddAuthor, authors}){
     const [newAuthor, setNewAuthor] = useState('')
     const history = useHistory()
 
@@ -32,9 +32,8 @@ function AuthorForm({onAddAuthor}){
                 />
                 <button type="submit" className="active">Add Author</button>
             </form>
+            <br/>
         </div>
-        
-    
     );
 }
 
