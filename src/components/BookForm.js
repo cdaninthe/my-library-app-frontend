@@ -19,7 +19,6 @@ function BookForm({onAddBook, authors, genres}){
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log(formData)
         fetch("http://localhost:9292/books", {
             method: "POST",
             headers: {

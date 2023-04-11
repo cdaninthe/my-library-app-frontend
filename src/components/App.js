@@ -17,22 +17,28 @@ function App() {
   const [genres, setGenres] = useState([])
 
   useEffect(()=>{
-      fetch(`http://localhost:9292/books`)
-      .then((r)=> r.json())
-      .then((books)=> setBooks(books))
+    fetchBooks()
+    fetchAuthors()
+    fetchGenres()
   },[])
 
-  useEffect(()=>{
+  function fetchBooks(){
+    fetch(`http://localhost:9292/books`)
+    .then((r)=> r.json())
+    .then((books)=> setBooks(books))
+  }
+
+  function fetchAuthors(){
     fetch(`http://localhost:9292/authors`)
     .then((r)=> r.json())
     .then((authors)=> setAuthors(authors))
-  },[])
+  }
 
-  useEffect(()=>{
+  function fetchGenres(){
     fetch(`http://localhost:9292/genres`)
     .then((r)=> r.json())
     .then((genres)=> setGenres(genres))
-  },[])
+  }
 
     
   function handleAddAuthor(newAuthor){

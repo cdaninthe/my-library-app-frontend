@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { Card, Icon } from "semantic-ui-react";
 
 function Book({book, onDeleteBook, onUpdateBook, authors, genres}){
+
     const [bookHidden, setBookHidden] = useState('')
     const [formHidden, setFormHidden] = useState('hidden')
     const [title, setTitle] = useState("")
     const [read, setRead] = useState()
     const [pages, setPages] = useState("")
-    const [author, setAuthor] = useState('')
-    const [genre, setGenre] = useState("")
+    const [authorId, setAuthorId] = useState('')
+    const [authorName, setAuthorName] = useState('')
+    const [genreId, setGenreId] = useState("")
+    const [genreName, setGenreName] = useState("")
     const [like, setLike] = useState(false)
     
 
@@ -27,21 +30,23 @@ function Book({book, onDeleteBook, onUpdateBook, authors, genres}){
         setRead(book.read)
         setPages(book.pages)
         setRead(book.read)
-        setAuthor(getAuthorName(book.author_id))
-        setGenre(getGenreName(book.genre_id))
+        setAuthorId(book.author_id)
+        setAuthorName(book.author.name)
+        setGenreId(book.genre_id)
+        setGenreName(book.genre.name)
     }
 
     function handleSubmitUpdate(e){
         e.preventDefault()
-
+       
         const bookData = {
             title: title,
             pages: pages,
-            author_id: getAuthorId(author),
-            genre_id: getGenreId(genre),
+            author_id: authorId,
+            genre_id: genreId,
             read: read
         }
-        
+
         fetch(`http://localhost:9292/books/${book.id}`, {
             method: "PATCH",
             headers: {
@@ -56,26 +61,6 @@ function Book({book, onDeleteBook, onUpdateBook, authors, genres}){
         setFormHidden('hidden')
     }
 
-    function getAuthorId(name){
-        const test = authors.find((author) => author.name === name)
-        return test.id
-    }
-
-    function getGenreId(name){
-        const test = genres.find((genre) => genre.name === name)
-        return test.id
-    }
-
-    function getAuthorName(id){
-        const test = authors.find((author) => author.id === id)
-        return test.name
-    }
-
-    function getGenreName(id){
-        const test = genres.find((genre) => genre.id === id)
-        return test.name
-    }
-
     function handleLikeClick(){
         like ? setLike(false) : setLike(true)
     }
@@ -85,8 +70,8 @@ function Book({book, onDeleteBook, onUpdateBook, authors, genres}){
         <Card fluid color='yellow' >
             <div className="content" hidden={bookHidden}>
                 <h3>{book.title}</h3>
-                <h4>{getAuthorName(book.author_id)}</h4>
-                <p>{getGenreName(book.genre_id)}</p>
+                <h4>{book.author.name}</h4>
+                <p>{book.genre.name}</p>
                 <p>{book.pages} pages</p> 
                 <p>{book.read ? "Read" : "Not Read"}</p>       
             </div>
@@ -94,20 +79,20 @@ function Book({book, onDeleteBook, onUpdateBook, authors, genres}){
                 <label>Title:</label><br />
                 <input value={title} onChange={(e)=> setTitle(e.target.value)}></input>
                 <label>Author:</label><br />
-                <select placeholder="Select an Author" onChange={(e) => setAuthor(e.target.value)}>
-                    <option value={author}>{author}</option>
+                <select placeholder="Select an Author" onChange={(e) => setAuthorId(e.target.value)}>
+                    <option value={authorId}>{authorName}</option>
                     {authors.map((author) => (
-                        <option key={author.id} value={author.name}>
+                        <option key={author.id} value={author.id}>
                             {author.name}
                         </option>
                     ))}
                 </select>
                 <br />
                 <label>Genre:</label><br />
-                <select placeholder="Select a Genre" onChange={(e) => setGenre(e.target.value)}>
-                    <option value={genre}>{genre}</option>
+                <select placeholder="Select a Genre" onChange={(e) => setGenreId(e.target.value)}>
+                    <option value={genreId}>{genreName}</option>
                     {genres.map((genre) => (
-                        <option key={genre.id} value={genre.name}>
+                        <option key={genre.id} value={genre.id}>
                             {genre.name}
                         </option>
                     ))}

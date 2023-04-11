@@ -7,22 +7,29 @@ function LibraryStats({books}){
     const [unread, setUnread] = useState([])
 
     useEffect(()=>{
+        mostPagesBook()
+        newestBook()
+        unreadBooks()
+    },[])
+    
+    function mostPagesBook(){
         fetch(`http://localhost:9292/books_most_pages`)
         .then((r)=> r.json())
         .then((book)=> setMostPages(book[0]))
-    },[])
+    }
 
-    useEffect(()=>{
+    function newestBook(){
         fetch(`http://localhost:9292/books_newest`)
         .then((r)=> r.json())
         .then((book)=> setNewest(book[0]))
-    },[])
-
-    useEffect(()=>{
+    }
+        
+    function unreadBooks(){
         fetch(`http://localhost:9292/books_unread`)
         .then((r)=> r.json())
         .then((books)=> setUnread(books))
-    },[])
+    }
+
     
     return(
         <div>
@@ -44,8 +51,7 @@ function LibraryStats({books}){
                 </Card>
                 <Card fluid color='blue'>
                     <h3>Book with the most pages</h3>
-                    <p>{mostPages.title}</p>
-                    <p>{mostPages.pages} pages</p>
+                    <p>{mostPages.title}: {mostPages.pages} pages</p>
                 </Card>
 
             </Card.Group>
